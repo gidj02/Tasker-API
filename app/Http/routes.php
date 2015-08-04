@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('api/v1/task', 'TaskController',[
+	'only' => [
+		'index', 'store', 'update', 'destroy'
+	]
+]);
