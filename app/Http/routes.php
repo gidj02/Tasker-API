@@ -21,3 +21,20 @@ Route::resource('api/v1/task', 'TaskController',[
 		'index', 'store', 'update', 'destroy'
 	]
 ]);
+
+
+Route::group(['prefix' => 'api/v1', 'middleware' => 'cors'], function() {
+
+    Route::resource('task', 'TaskController',[
+		'only' => [
+			'index', 'store', 'update', 'destroy'
+		]
+	]);
+
+    Route::resource('user', 'UserController',[
+        'only' => [
+            'index', 'store', 'update', 'destroy'
+        ]
+    ]);
+
+});
