@@ -25,6 +25,13 @@ Route::resource('api/v1/task', 'TaskController',[
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'cors'], function() {
 
+	Route::resource('authenticate', 'AuthenticateController', [
+		'only' => [
+			'index'
+		]
+	]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+
     Route::resource('task', 'TaskController',[
 		'only' => [
 			'index', 'store', 'update', 'destroy'
